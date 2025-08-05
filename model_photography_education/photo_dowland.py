@@ -14,4 +14,4 @@ google_crawler = GoogleImageCrawler(storage={"root_dir": "dowland_photo/"+q})
 google_crawler.crawl(keyword=q, max_num=100, filters={
     "type": "photo",
     "size": "large"
-})
+}) 
