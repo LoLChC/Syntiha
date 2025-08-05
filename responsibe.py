@@ -22,7 +22,8 @@ def speak(text):
 
     text = str(text)
     engine = pyttsx3.init()
-    engine.setProperty('rate', 100)
+    engine.setProperty('rate', 150)
+    engine.setProperty('volume', 1.0)
     engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\MSTTS_V110_trTR_Tolga')
     engine.say(text)
     engine.runAndWait()
@@ -163,7 +164,7 @@ def wait_for_wake_word(wake_words=None):
     """
 
     if wake_words is None:
-        wake_words = ["synthia", "hey synthia"]
+        wake_words = ["hey"]
 
     model_path = r"vosk-tr"
     model = vosk.Model(model_path)
@@ -188,7 +189,7 @@ def wait_for_wake_word(wake_words=None):
             if voice == "":
                 continue  # Boşsa pas geç
 
-            if any(wake_word == voice for wake_word in wake_words):
+            if any(wake_word in voice for wake_word in wake_words):
                 stream.stop_stream()
                 stream.close()
                 p.terminate()

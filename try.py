@@ -1,4 +1,8 @@
 import responsibe
 
+voice = responsibe.wait_for_wake_word()
 
-responsibe.speak("Lale elma al lale 2 tane elma al lale")
+def konus():
+    responsibe.speak("İyiyim")
+
+responsibe.response("nasılsın", voice, konus)
